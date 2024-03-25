@@ -63,7 +63,7 @@ startBtn.addEventListener('click', event => {
     timeInterval = userSelectedDate - new Date();
     inputTime.disabled = true;
 
-    if (timeInterval < 0) {
+    if (timeInterval < 1) {
       startBtn.disabled = true;
       inputTime.disabled = false;
       clearInterval(repeatTime);
