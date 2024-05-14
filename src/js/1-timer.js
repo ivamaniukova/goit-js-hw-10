@@ -22,6 +22,7 @@ const options = {
         position: 'topRight',
         message: `Please choose a date in the future`,
       });
+      startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
       inputTime.disabled = true;
@@ -62,11 +63,15 @@ startBtn.addEventListener('click', event => {
   const repeatTime = setInterval(() => {
     timeInterval = userSelectedDate - new Date();
     inputTime.disabled = true;
-
-    if (timeInterval < 1) {
-      startBtn.disabled = true;
+    startBtn.disabled = true;
+    if (timeInterval < 1000) {
+      startBtn.disabled = false;
       inputTime.disabled = false;
       clearInterval(repeatTime);
+      iziToast.success({
+        title: 'Success',
+        message: 'Countdown finished!',
+      });
       return;
     }
 
